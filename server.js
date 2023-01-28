@@ -12,12 +12,11 @@ server.use(jsonServer.rewriter({
 }))
 
 server.use(jsonServer.bodyParser)
-server.use((req, res, next) => {
+server.use((req, res) => {
   if (req.method === 'POST') {
     req.body.createdAt = Date.now()
   }
-  // Continue to JSON Server router
-  next()
+
 })
 
 server.use(router)
